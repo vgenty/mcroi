@@ -4,6 +4,7 @@
 #include "Analysis/ana_base.h"
 #include "DataFormat/PiZeroROI.h"
 #include "DataFormat/wire.h"
+#include "LArUtil/Geometry.h"
 
 //#include "LArUtil/GeometryUtilities.h"
 

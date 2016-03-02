@@ -13,6 +13,7 @@ namespace larlite {
   
   bool MCROI::analyze(storage_manager* storage) {
 
+    auto geo = ::larutil::Geometry::GetME();
 
     auto event_w    = storage->get_data<event_wire>     ( "caldata" );
     auto event_roi  = storage->get_data<event_PiZeroROI>( "mcroi"  );
@@ -38,7 +39,7 @@ namespace larlite {
       auto& min_w = min_wire[plane];
       auto& max_w = max_wire[plane];
 
-      int channel = wire.Channel();
+      int channel = geo->ChannelToWireID(wire.Channel()).Wire;
       if ( channel < min_w ) min_w = channel;
       if ( channel > max_w ) max_w = channel;
 
