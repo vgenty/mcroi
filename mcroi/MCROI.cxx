@@ -18,6 +18,11 @@ namespace larlite {
     auto event_w    = storage->get_data<event_wire>     ( "caldata" );
     auto event_roi  = storage->get_data<event_PiZeroROI>( "mcroi"  );
 
+    storage->set_id(storage->get_data<event_wire>("caldata")->run(),
+		    storage->get_data<event_wire>("caldata")->subrun(),
+		    storage->get_data<event_wire>("caldata")->event_id());
+    
+
     int min_time[3] = {9999999,9999999,9999999};
     int max_time[3] = {0,0,0};
 
