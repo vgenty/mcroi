@@ -5,11 +5,7 @@
 
 namespace larlite {
 
-  bool MCROI::initialize() {
-
-    
-    return true;
-  }
+  bool MCROI::initialize() { return true; }
   
   bool MCROI::analyze(storage_manager* storage) {
 
@@ -87,12 +83,7 @@ namespace larlite {
     return true;
   }
 
-  bool MCROI::finalize() {
-
-    
-    
-    return true;
-  }
+  bool MCROI::finalize() { return true; }
 
 }
 #endif

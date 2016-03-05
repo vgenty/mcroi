@@ -6,9 +6,6 @@
 #include "DataFormat/wire.h"
 #include "LArUtil/Geometry.h"
 
-//#include "LArUtil/GeometryUtilities.h"
-
-
 namespace larlite {
 
   class MCROI : public ana_base{
@@ -21,8 +18,6 @@ namespace larlite {
     virtual bool initialize();
     virtual bool analyze(storage_manager* storage);
     virtual bool finalize();
-
-  protected:
     
   };
 }

@@ -19,8 +19,7 @@ my_proc.set_io_mode(fmwk.storage_manager.kBOTH)
 
 my_proc.set_data_to_write(fmwk.data.kPiZeroROI,"mcroi")
 
-#my_proc.set_ana_output_file("from_test_ana_you_can_remove_me.root");
-my_proc.set_output_file("aho.root")
+my_proc.set_output_file("mcroi.root")
 
 my_proc.add_process(fmwk.MCROI())
 
