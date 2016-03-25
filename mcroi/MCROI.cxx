@@ -14,10 +14,10 @@ namespace larlite {
 
     std::cout << "Finding ROI!!!" << std::endl;
     
-    // turns out this is nontrival to pass generate std::vector<data_base> inheritor generically
-    // to an algorithm, just send it storage_manager who cares
+    // turns out it is nontrival to pass std::vector<data_base> inheritor generically
+    // to algorithm without factory implementation, just send it storage_manager who gives a shit
 
-    _ralgo->FindROI(storage,"gaushit");
+    _ralgo->FindROI(storage,"gaushit"); // hard code producer :)
     
     PiZeroROI proi(_ralgo->wirerange,_ralgo->timerange);
     proi.SetVertex(_ralgo->vertex);
