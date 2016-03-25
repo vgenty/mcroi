@@ -12,8 +12,6 @@ namespace larlite {
 
     auto event_roi  = storage->get_data<event_PiZeroROI>( "mcroi" );
 
-    std::cout << "Finding ROI!!!" << std::endl;
-    
     // turns out it is nontrival to pass std::vector<data_base> inheritor generically
     // to algorithm without factory implementation, just send it storage_manager who gives a shit
 

@@ -11,10 +11,10 @@
 
 namespace larlite {
 
-  void roihit::FindROI(storage_manager* storage,std::string producer) {
-
+  bool roihit::FindROI(storage_manager* storage,std::string producer) {
+    
     auto event_h      = storage->get_data<event_hit>( producer );
-
+    
     //is pi0 really a mctrack? Probably, just find photon start points
     auto event_shower = storage->get_data<event_mcshower>( "mcreco" );
 
@@ -88,10 +88,13 @@ namespace larlite {
     for(short i=0;i<3;++i) {
       auto proj = geo->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
       vertex[i] = { proj.w,proj.t };
-      std::cout << proj.t << " ";
     }
-    std::cout << "\n";
-    //are we done??
+
+    //check that vertex is inside ROI, if not... bad ROI
+    // return false;
+    
+
+    return true;
     
   }
   

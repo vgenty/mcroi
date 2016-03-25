@@ -1,10 +1,9 @@
+//by vic
 #ifndef ROIALGO_CXX
 #define ROIALGO_CXX
 
 #include "roialgo.h"
 
-namespace larlite {
-  
-}
+namespace larlite { }
 
 #endif

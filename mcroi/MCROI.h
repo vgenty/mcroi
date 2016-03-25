@@ -2,6 +2,8 @@
 #ifndef LARLITE_MCROI_H
 #define LARLITE_MCROI_H
 
+#include <string>
+
 #include "Analysis/ana_base.h"
 #include "DataFormat/PiZeroROI.h"
 #include "DataFormat/wire.h"
@@ -21,11 +23,13 @@ namespace larlite {
     virtual bool analyze(storage_manager* storage);
     virtual bool finalize();
 
-    void SetROIAlgo(roialgo* ralgo) { _ralgo = ralgo; }
+    void SetROIAlgo        (roialgo* ralgo) { _ralgo = ralgo; }
+    void SetProducer (std::string producer) { _producer = producer; }
     
   private:
 
     roialgo* _ralgo;
+    std::string _producer;
     
   };
 }

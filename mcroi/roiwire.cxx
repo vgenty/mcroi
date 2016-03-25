@@ -1,3 +1,4 @@
+//by vic
 #ifndef ROIWIRE_CXX
 #define ROIWIRE_CXX
 
@@ -9,7 +10,7 @@
 
 namespace larlite {
 
-  void roiwire::FindROI(storage_manager* storage,std::string producer) {
+  bool roiwire::FindROI(storage_manager* storage,std::string producer) {
 
 
     std::cout << "producer: " << producer << std::endl;
@@ -76,6 +77,12 @@ namespace larlite {
     timerange = { {min_time[0],max_time[0]},
 		  {min_time[1],max_time[1]},
 		  {min_time[2],max_time[2]} };
+    
+
+    //some check that it's good?
+    //return false;
+    
+    return true;
     
   }
   

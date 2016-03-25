@@ -1,3 +1,4 @@
+#by vic
 import sys
 
 if len(sys.argv) < 2:
@@ -23,8 +24,15 @@ my_proc.set_output_file("mcroi.root")
 
 mcroi = fmwk.MCROI()
 
-#mcroi.SetROIAlgo(fmwk.roiwire())
-mcroi.SetROIAlgo(fmwk.roihit())
+#type of roi you want
+
+#roi = fmwk.roiwire()
+#mcroi.SetProducer("caldata")
+
+mcroi.SetProducer("gaushit")
+roi = fmwk.roihit();
+
+mcroi.SetROIAlgo(roi)
 
 my_proc.add_process(mcroi)
 
