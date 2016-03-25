@@ -10,7 +10,12 @@
 #pragma link off all functions;
 
 #pragma link C++ class larlite::MCROI+;
+#pragma link C++ class larlite::roialgo+;
+#pragma link C++ class larlite::roiwire+;
+#pragma link C++ class larlite::roihit+;
+
 //ADD_NEW_CLASS ... do not change this line
 #endif
+
 
 

@@ -21,7 +21,12 @@ my_proc.set_data_to_write(fmwk.data.kPiZeroROI,"mcroi")
 
 my_proc.set_output_file("mcroi.root")
 
-my_proc.add_process(fmwk.MCROI())
+mcroi = fmwk.MCROI()
+
+#mcroi.SetROIAlgo(fmwk.roiwire())
+mcroi.SetROIAlgo(fmwk.roihit())
+
+my_proc.add_process(mcroi)
 
 my_proc.run();
 sys.exit(0)
