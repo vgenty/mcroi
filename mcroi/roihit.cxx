@@ -7,8 +7,6 @@
 #include "DataFormat/hit.h"
 #include "DataFormat/mcshower.h"
 
-#include "LArUtil/GeometryUtilities.h"
-
 namespace larlite {
 
   bool roihit::FindROI(storage_manager* storage,std::string producer) {
@@ -23,8 +21,6 @@ namespace larlite {
 		     storage->get_data<event_hit>(producer)->event_id() );
 
     
-    auto geoh = ::larutil::GeometryUtilities::GetME();
-
     // 3 planes
     
     int min_time[3] = {9999999,9999999,9999999};
@@ -86,7 +82,7 @@ namespace larlite {
 
 
     for(short i=0;i<3;++i) {
-      auto proj = geoh->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
+      auto proj = _geoh->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
       vertex[i] = { proj.w,proj.t - _toffset}; // - vic finds: 2255.
     }
 

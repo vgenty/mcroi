@@ -7,14 +7,17 @@
 #include <string>
 
 #include "DataFormat/storage_manager.h"
+#include "LArUtil/GeometryUtilities.h"
 
 namespace larlite {
 
   class roialgo {
 
   public:
+    
+    roialgo() 
 
-    roialgo() { Clear(); }
+    { Clear(); _geoh=::larutil::GeometryUtilities::GetME(); }
 
     /// Default destructor
     virtual ~roialgo(){}
@@ -32,7 +35,9 @@ namespace larlite {
     std::vector<std::pair<int,int> > timerange;
     
   protected:
+
     unsigned _toffset;
+    const ::larutil::GeometryUtilities* _geoh;
     
   };
   

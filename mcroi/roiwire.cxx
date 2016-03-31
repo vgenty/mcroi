@@ -7,7 +7,7 @@
 #include "DataFormat/wire.h"
 #include "DataFormat/mcshower.h"
 
-#include "LArUtil/GeometryUtilities.h"
+
 #include "LArUtil/Geometry.h"
 
 namespace larlite {
@@ -22,7 +22,6 @@ namespace larlite {
     
     
     auto geo  = ::larutil::Geometry::GetME();
-    auto geoh = ::larutil::GeometryUtilities::GetME();
     
     // 3 planes
     
@@ -98,7 +97,7 @@ namespace larlite {
     }
 
     for(short i=0;i<3;++i) {
-      auto proj = geoh->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
+      auto proj = _geoh->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
       vertex[i] = { proj.w,proj.t - _toffset}; // - vic finds: 2255.
     }
 
