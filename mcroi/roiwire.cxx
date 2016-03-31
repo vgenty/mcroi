@@ -5,24 +5,25 @@
 #include "roiwire.h"
 
 #include "DataFormat/wire.h"
+#include "DataFormat/mcshower.h"
 
+#include "LArUtil/GeometryUtilities.h"
 #include "LArUtil/Geometry.h"
 
 namespace larlite {
 
   bool roiwire::FindROI(storage_manager* storage,std::string producer) {
 
-
-    std::cout << "producer: " << producer << std::endl;
     auto event_w = storage->get_data<event_wire>( producer );
 
     storage->set_id( storage->get_data<event_wire>(producer)->run(),
 		     storage->get_data<event_wire>(producer)->subrun(),
 		     storage->get_data<event_wire>(producer)->event_id() );
-
     
-    auto geo = ::larutil::Geometry::GetME();
-
+    
+    auto geo  = ::larutil::Geometry::GetME();
+    auto geou = ::larutil::GeometryUtilities::GetME();
+    
     // 3 planes
     
     int min_time[3] = {9999999,9999999,9999999};
@@ -68,8 +69,6 @@ namespace larlite {
     int wpad = 10;
     int tpad = 10;
     
-    vertex    = {};
-
     wirerange = { {min_wire[0],max_wire[0]},
 		  {min_wire[1],max_wire[1]},
 		  {min_wire[2],max_wire[2]} };
@@ -81,6 +80,28 @@ namespace larlite {
 
     //some check that it's good?
     //return false;
+
+    //fill the vertex in exact same way as hit
+    auto event_shower = storage->get_data<event_mcshower>( "mcreco" );
+
+    //Do the vertex
+    std::vector<double> vtx;
+    
+    for( const auto& s : *event_shower ) {
+      
+      if ( s.MotherPdgCode() != 111 ) continue; // this parents particle was not pizero
+
+      vtx = { s.Start().X(),s.Start().Y(),s.Start().Z() };
+      
+      break; // found it, leave
+      
+    }
+
+    for(short i=0;i<3;++i) {
+      auto proj = geou->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
+      vertex[i] = { proj.w,proj.t };
+    }
+
     
     return true;
     

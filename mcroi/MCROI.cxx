@@ -15,7 +15,7 @@ namespace larlite {
     // turns out it is nontrival to pass std::vector<data_base> inheritor generically
     // to algorithm without factory implementation, just send it storage_manager who gives a shit
 
-    _ralgo->FindROI(storage,"gaushit"); // hard code producer :)
+    _ralgo->FindROI(storage,"caldata"); // hard code producer :)
     
     PiZeroROI proi(_ralgo->wirerange,_ralgo->timerange);
     proi.SetVertex(_ralgo->vertex);

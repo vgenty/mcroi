@@ -26,11 +26,11 @@ mcroi = fmwk.MCROI()
 
 #type of roi you want
 
-#roi = fmwk.roiwire()
-#mcroi.SetProducer("caldata")
+roi = fmwk.roiwire()
+mcroi.SetProducer("caldata")
 
-mcroi.SetProducer("gaushit")
-roi = fmwk.roihit();
+# mcroi.SetProducer("gaushit")
+# roi = fmwk.roihit();
 
 mcroi.SetROIAlgo(roi)
 
