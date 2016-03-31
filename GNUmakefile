@@ -30,13 +30,13 @@ SUBDIRS := mcroi #ADD_NEW_SUBDIR ... do not remove this comment from this line
 .phony: all clean
 
 all:
-	@for i in $(SUBDIRS); do ( echo "" && echo "Compiling $$i..." && cd $(LARLITE_USERDEVDIR)/pizeroroi/$$i && $(MAKE) ) || exit $$?; done
+	@for i in $(SUBDIRS); do ( echo "" && echo "Compiling $$i..." && cd $(LARLITE_USERDEVDIR)/mcroi/$$i && $(MAKE) ) || exit $$?; done
 #####################################################################################
 #
 # CLEANs...
 #
 clean:
-	@for i in $(SUBDIRS); do ( echo "" && echo "Cleaning $$i..." && cd $(LARLITE_USERDEVDIR)/pizeroroi/$$i && $(MAKE) clean && rm -f $(LARLITE_LIBDIR)/$$i.* ) || exit $$?; done
+	@for i in $(SUBDIRS); do ( echo "" && echo "Cleaning $$i..." && cd $(LARLITE_USERDEVDIR)/mcroi/$$i && $(MAKE) clean && rm -f $(LARLITE_LIBDIR)/$$i.* ) || exit $$?; done
 
 #####################################################################################
 #
@@ -44,13 +44,13 @@ clean:
 #
 doxygen:
 	@echo 'dOxygenising your code...'
-	@mkdir -p $(LARLITE_USERDEVDIR)/pizeroroi/doc/dOxygenMyProject
-	@doxygen $(LARLITE_USERDEVDIR)/pizeroroi/doc/doxygenMyProject.script
+	@mkdir -p $(LARLITE_USERDEVDIR)/mcroi/doc/dOxygenMyProject
+	@doxygen $(LARLITE_USERDEVDIR)/mcroi/doc/doxygenMyProject.script
 
 doxygen+:
 	@echo 'dOxygenising MyProject + local-ROOT...'
-	@mkdir -p $(LARLITE_USERDEVDIR)/pizeroroi/doc/dOxygenMyProject+
-	@doxygen $(LARLITE_USERDEVDIR)/pizeroroi/doc/doxygenMyProject+.script
+	@mkdir -p $(LARLITE_USERDEVDIR)/mcroi/doc/dOxygenMyProject+
+	@doxygen $(LARLITE_USERDEVDIR)/mcroi/doc/doxygenMyProject+.script
 #
 #####################################################################################
 #EOF
