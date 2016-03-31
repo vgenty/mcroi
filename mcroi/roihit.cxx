@@ -23,7 +23,7 @@ namespace larlite {
 		     storage->get_data<event_hit>(producer)->event_id() );
 
     
-    auto geo = ::larutil::GeometryUtilities::GetME();
+    auto geoh = ::larutil::GeometryUtilities::GetME();
 
     // 3 planes
     
@@ -86,13 +86,12 @@ namespace larlite {
 
 
     for(short i=0;i<3;++i) {
-      auto proj = geo->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
-      vertex[i] = { proj.w,proj.t };
+      auto proj = geoh->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
+      vertex[i] = { proj.w,proj.t - _toffset}; // - vic finds: 2255.
     }
 
     //check that vertex is inside ROI, if not... bad ROI
     // return false;
-    
 
     return true;
     

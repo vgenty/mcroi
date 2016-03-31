@@ -22,7 +22,7 @@ namespace larlite {
     
     
     auto geo  = ::larutil::Geometry::GetME();
-    auto geou = ::larutil::GeometryUtilities::GetME();
+    auto geoh = ::larutil::GeometryUtilities::GetME();
     
     // 3 planes
     
@@ -66,8 +66,8 @@ namespace larlite {
 
 
     // no padding for now, i don't want to have to check edges
-    int wpad = 10;
-    int tpad = 10;
+    //int wpad = 10;
+    //int tpad = 10;
     
     wirerange = { {min_wire[0],max_wire[0]},
 		  {min_wire[1],max_wire[1]},
@@ -98,8 +98,8 @@ namespace larlite {
     }
 
     for(short i=0;i<3;++i) {
-      auto proj = geou->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
-      vertex[i] = { proj.w,proj.t };
+      auto proj = geoh->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
+      vertex[i] = { proj.w,proj.t - _toffset}; // - vic finds: 2255.
     }
 
     

@@ -14,15 +14,15 @@ namespace larlite {
 
     // turns out it is nontrival to pass std::vector<data_base> inheritor generically
     // to algorithm without factory implementation, just send it storage_manager who gives a shit
+    _ralgo->Clear();
 
-    _ralgo->FindROI(storage,"caldata"); // hard code producer :)
+    if ( ! _ralgo->FindROI(storage,_producer) ) // hard code producer :)
+      return false;
     
     PiZeroROI proi(_ralgo->wirerange,_ralgo->timerange);
     proi.SetVertex(_ralgo->vertex);
     
     event_roi->emplace_back(proi);
-    
-    _ralgo->Clear();
     
     return true;
   }

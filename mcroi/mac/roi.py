@@ -28,6 +28,7 @@ mcroi = fmwk.MCROI()
 
 roi = fmwk.roiwire()
 mcroi.SetProducer("caldata")
+roi.SetTickOffset(2255);
 
 # mcroi.SetProducer("gaushit")
 # roi = fmwk.roihit();

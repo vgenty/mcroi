@@ -23,13 +23,16 @@ namespace larlite {
     virtual bool FindROI(storage_manager* storage,std::string producer) = 0;
 
     inline void Clear() { vertex.resize(3); wirerange.resize(3); timerange.resize(3); }
-    
+
+    void SetTickOffset(unsigned t) { _toffset = t; }
     // protected:
-  public:
     
     std::vector<std::pair<int,int> > vertex;
     std::vector<std::pair<int,int> > wirerange;
     std::vector<std::pair<int,int> > timerange;
+    
+  protected:
+    unsigned _toffset;
     
   };
   
