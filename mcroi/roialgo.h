@@ -7,7 +7,7 @@
 #include <string>
 
 #include "DataFormat/storage_manager.h"
-#include "LArUtil/GeometryUtilities.h"
+#include "LArUtil/GeometryHelper.h"
 
 namespace larlite {
 
@@ -17,7 +17,7 @@ namespace larlite {
     
     roialgo() 
 
-    { Clear(); _geoh=::larutil::GeometryUtilities::GetME(); }
+    { Clear(); _geoh=::larutil::GeometryHelper::GetME(); _toffset = 0; }
 
     /// Default destructor
     virtual ~roialgo(){}
@@ -37,7 +37,7 @@ namespace larlite {
   protected:
 
     unsigned _toffset;
-    const ::larutil::GeometryUtilities* _geoh;
+    const ::larutil::GeometryHelper* _geoh;
     
   };
   

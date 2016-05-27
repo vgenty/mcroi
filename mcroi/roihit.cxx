@@ -82,7 +82,7 @@ namespace larlite {
 
 
     for(short i=0;i<3;++i) {
-      auto proj = _geoh->Get2DPointProjection( &vtx[0], i ); // pass as C array to return wire and time
+      auto proj = _geoh->Point_3Dto2D( &vtx[0], i ); // pass as C array to return wire and time
       vertex[i] = { proj.w,proj.t - _toffset}; // - vic finds: 2255.
     }
 
